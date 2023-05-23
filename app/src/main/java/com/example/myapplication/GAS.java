@@ -12,13 +12,6 @@ public class GAS {
         this.gas_pk = gas_pk;
     }
 
-    public double getNatural() {
-        return natural;
-    }
-
-    public void setNatural(double natural) {
-        this.natural = natural;
-    }
 
     public double getCO() {
         return CO;
@@ -45,7 +38,16 @@ public class GAS {
     }
 
     public int gas_pk;
-    public double natural;
+
+    public double getMatan() {
+        return matan;
+    }
+
+    public void setMatan(double matan) {
+        this.matan = matan;
+    }
+
+    public double matan;
     public double CO;
     public double LPGLNG;
     public LocalDateTime TIMESTAMP;

@@ -61,8 +61,8 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="337dp"
         android:backgroundTint="#D5D5D5"
-        android:textColor="#000000"
         android:text="기기연결"
+        android:textColor="#000000"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/BT4"
@@ -77,8 +77,8 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="337dp"
-        android:text="기기변경"
         android:backgroundTint="#D5D5D5"
+        android:text="기기변경"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/BT5"
@@ -93,8 +93,8 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="337dp"
-        android:text="알림"
         android:backgroundTint="#D5D5D5"
+        android:text="알림"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/BT6"
@@ -109,13 +109,23 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="337dp"
-        android:text="센서변경"
         android:backgroundTint="#D5D5D5"
+        android:text="센서변경"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/BT5"
         app:layout_constraintTop_toBottomOf="@+id/imageView4"
         tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/wifiNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="84dp"
+        app:layout_constraintEnd_toEndOf="@+id/BT2"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
