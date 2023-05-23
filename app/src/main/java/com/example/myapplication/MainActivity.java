@@ -23,6 +23,9 @@ import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.eclipse.paho.client.mqttv3.MqttTopic;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -64,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 String payload = new String(message.getPayload());
                 // Process the received message
                 // TODO: Handle the received value
+                parseJson(payload);
             }
 
             @Override
@@ -110,6 +114,19 @@ public class MainActivity extends AppCompatActivity {
     private void parseJson(String json) {
         // Parse the JSON string and process the received values
         // TODO: Implement JSON parsing and value handling logic
+        try{
+            JSONObject jsonObject = new JSONObject(json);
+
+            String gasSensor = jsonObject.getString("Gas_sensor");
+            int value = jsonObject.getInt("value");
+
+            if (gasSensor.equals("LPG")){
+
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     private String getWifiName() {
