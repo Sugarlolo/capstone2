@@ -90,9 +90,9 @@ public class DataAdapter {
                     // TODO : Record 기술
                     // id, name, account, privateKey, secretKey, Comment
                     gas.setGas_pk(mCur.getInt(0));
-                    gas.setNatural(mCur.getDouble(1));
-                    gas.setCO(mCur.getDouble(2));
-                    gas.setLPGLNG(mCur.getDouble(3));
+                    gas.setMatan(mCur.getInt(1));
+                    gas.setCO(mCur.getInt(2));
+                    gas.setLPGLNG(mCur.getInt(3));
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                         gas.setTIMESTAMP(LocalDateTime.parse(mCur.getString(4)));
                     }

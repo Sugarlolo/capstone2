@@ -1,5 +1,7 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
+import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -10,8 +12,11 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 import java.net.ConnectException;
+import java.util.ArrayList;
 
 import org.eclipse.paho.android.service.MqttAndroidClient;
 import org.eclipse.paho.client.mqttv3.IMqttActionListener;
@@ -26,15 +31,27 @@ import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
+import android.graphics.drawable.AnimationDrawable;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.View;
+import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
 
     private MqttAndroidClient mqttAndroidClient;
 
-    private static final String MQTT_BROKER = "tcp://broker.mqtt-dashboard.com:1883";
+
+    private ListView listView;
+    private ArrayAdapter<String> adapter;
+
+    private ImageView refreshButton;
+    private AnimationDrawable refreshAnimation;
+
+    private static final String MQTT_BROKER = "tcp://broker.mqtt-dashboard.com:1883"; // MQTT 브로커 주소
     private static final String MQTT_CLIENT_ID = "android-client";
-    private static final String MQTT_TOPIC = "myeongseung";
+    private static final String MQTT_TOPIC = "myeongseung"; // 구독할 토픽
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,7 +112,27 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        listView = findViewById(R.id.listView);
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
+        listView.setAdapter(adapter);
+
+
+        refreshButton = findViewById(R.id.refreshButton);
+        refreshButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Start the refresh animation
+                startRefreshAnimation();
+
+                // Trigger the MQTT data reload
+                reloadMqttData();
+            }
+        });
+
     }
+
+
     private void subscribeToTopic() {
         try {
             mqttAndroidClient.subscribe(MQTT_TOPIC, 0, new IMqttMessageListener() {
@@ -121,6 +158,9 @@ public class MainActivity extends AppCompatActivity {
             int value = jsonObject.getInt("value");
 
             if (gasSensor.equals("LPG")){
+                String item = "Gas Sensor: " + gasSensor + ", Value: " + value;  // JSON 데이터를 리스트뷰에 출력하기에서 JSON 데이터 넣는 곳
+                adapter.add(item);
+                adapter.notifyDataSetChanged();
 
             }
 
@@ -165,5 +205,45 @@ public class MainActivity extends AppCompatActivity {
         }
         return wifiName;
     }
+
+    private void startRefreshAnimation() {
+        refreshButton.setImageResource(R.drawable.refresh_animation);
+        refreshAnimation = (AnimationDrawable) refreshButton.getDrawable();
+        refreshAnimation.start();
+
+        // Stop the refresh animation after a certain duration
+        Handler handler = new Handler(Looper.getMainLooper());
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                stopRefreshAnimation();
+            }
+        }, 2000); // Adjust the duration as needed (e.g., 2000 milliseconds = 2 seconds)
+    }
+
+    private void stopRefreshAnimation() {
+        if (refreshAnimation != null) {
+            refreshAnimation.stop();
+            refreshButton.setImageResource(R.drawable.refresh);
+            refreshAnimation = null;
+        }
+    }
+
+    private void reloadMqttData() {
+        // Clear the existing adapter data
+        adapter.clear();
+        adapter.notifyDataSetChanged();
+
+        // Unsubscribe from the MQTT topic
+        try {
+            mqttAndroidClient.unsubscribe(MQTT_TOPIC);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        // Subscribe to the MQTT topic again
+        subscribeToTopic();
+    }
+
 
 }

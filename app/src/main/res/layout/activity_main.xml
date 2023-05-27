@@ -6,49 +6,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".MainActivity">
-
-    <Button
-        android:id="@+id/BT1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="5dp"
-        android:backgroundTint="#DCDCDC"
-        android:text="@string/char01"
-        android:textColor="#000000"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/BT2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="204dp"
-        android:layout_marginBottom="679dp"
-        android:backgroundTint="#CACACA"
-        android:text="@string/char02"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/BT1"
-        app:layout_constraintTop_toTopOf="parent" />
+    tools:context=".MainActivity"
+    tools:ignore="ExtraText">
 
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="378dp"
         android:layout_height="231dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="15dp"
         android:layout_marginEnd="17dp"
         android:layout_marginBottom="432dp"
         android:contentDescription="@string/image01"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/BT1"
         app:srcCompat="@drawable/jkk_ui"
         tools:ignore="ImageContrastCheck" />
 
@@ -90,32 +61,16 @@
         android:id="@+id/BT5"
         android:layout_width="75dp"
         android:layout_height="75dp"
+        android:layout_marginStart="28dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
         android:layout_marginBottom="337dp"
         android:backgroundTint="#D5D5D5"
         android:text="알림"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/BT6"
         app:layout_constraintStart_toEndOf="@+id/BT4"
         app:layout_constraintTop_toBottomOf="@+id/imageView4"
-        tools:ignore="HardcodedText" />
-
-    <Button
-        android:id="@+id/BT6"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="337dp"
-        android:backgroundTint="#D5D5D5"
-        android:text="센서변경"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/BT5"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="HardcodedText" />
 
     <TextView
@@ -123,9 +78,54 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="84dp"
-        app:layout_constraintEnd_toEndOf="@+id/BT2"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ListView
+        android:layout_width="376dp"
+        android:layout_height="300dp"
+        android:layout_marginBottom="16dp"
+        android:id="@+id/listView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.305"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listview"
+        app:layout_constraintVertical_bias="0.529"
+        tools:ignore="UnknownId" />
+
+    <ImageButton
+        android:id="@+id/refreshButton"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="21dp"
+        android:background="#FFFFFF"
+        android:scaleType="fitStart"
+        app:layout_constraintBottom_toTopOf="@+id/listView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/BT5"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/refresh" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="257dp"
+        android:autoText="false"
+        android:fontFamily="sans-serif-medium"
+        android:text="우리집 가스 검출 APP"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    app:listSelector="@android:color/holo_blue_bright"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
