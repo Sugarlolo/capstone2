@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private ListView listView;
-    private ArrayAdapter<String> adapter;
+    private ArrayAdapter<DataAdapter.CustomObject> adapter;
 
     private ImageView refreshButton;
     private AnimationDrawable refreshAnimation;
@@ -169,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private String getWifiName() {
+    private String getWifiName() { // 와이파이 이름 받아와서 textField를 바꾸는 코드
         String wifiName = "";
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         if (connectivityManager != null) {

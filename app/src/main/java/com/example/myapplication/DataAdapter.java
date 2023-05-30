@@ -90,7 +90,7 @@ public class DataAdapter {
                     // TODO : Record 기술
                     // id, name, account, privateKey, secretKey, Comment
                     gas.setGas_pk(mCur.getInt(0));
-                    gas.setMatan(mCur.getInt(1));
+                    gas.setMETAINE(mCur.getInt(1));
                     gas.setCO(mCur.getInt(2));
                     gas.setLPGLNG(mCur.getInt(3));
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -108,6 +108,22 @@ public class DataAdapter {
         {
             Log.e(TAG, "getTestData >>"+ mSQLException.toString());
             throw mSQLException;
+        }
+    }
+
+    public class CustomObject {
+        private String attribute1;
+        private int attribute2;
+        private boolean attribute3;
+        private double attribute4;
+        private String attribute5;
+
+        public CustomObject(String attribute1, int attribute2, boolean attribute3, double attribute4, String attribute5) {
+            this.attribute1 = attribute1;
+            this.attribute2 = attribute2;
+            this.attribute3 = attribute3;
+            this.attribute4 = attribute4;
+            this.attribute5 = attribute5;
         }
     }
 

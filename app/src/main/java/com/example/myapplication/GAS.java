@@ -21,9 +21,9 @@ public class GAS {
 
 
 
-    public int matan;
-    public int getMatan() { return matan;  }
-    public void setMatan(int matan) { this.matan = matan;  }
+    public int METAINE;
+    public int getMETAINE() { return METAINE;  }
+    public void setMETAINE(int METAINE) { this.METAINE = METAINE;  }
 
 
     public int CO;
@@ -34,6 +34,4 @@ public class GAS {
     public void setLPGLNG(int LPGLNG) { this.LPGLNG = LPGLNG; }
     public int getLPGLNG() {return LPGLNG; }
     public int LPGLNG;
-
-
 }
