@@ -154,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
         try{
             JSONObject jsonObject = new JSONObject(json);
 
-            String gasSensor = jsonObject.getString("Gas_sensor");
+            /*String gasSensor = jsonObject.getString("Gas_sensor");
             int value = jsonObject.getInt("value");
 
             if (gasSensor.equals("LPG")){
@@ -162,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
                 adapter.add(item);
                 adapter.notifyDataSetChanged();
 
-            }
+            }*/
 
         } catch (JSONException e) {
             e.printStackTrace();
