@@ -39,6 +39,7 @@
         app:layout_constraintEnd_toStartOf="@+id/BT4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="HardcodedText" />
 
     <Button
@@ -114,14 +115,15 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="230dp"
+        android:layout_height="43dp"
         android:layout_marginStart="26dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="257dp"
-        android:autoText="false"
+        android:layout_marginTop="16dp"
+
+        android:layout_marginEnd="155dp"
         android:fontFamily="sans-serif-medium"
         android:text="우리집 가스 검출 APP"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -134,14 +136,13 @@
         <ProgressBar
             android:id="@+id/progressBar"
             style="@android:style/Widget.ProgressBar.Horizontal"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
+            android:layout_width="160dp"
+            android:layout_height="173dp"
             android:indeterminate="false"
             android:max="100"
             android:progress="0"
             android:rotation="-90"
             android:secondaryProgress="0"
-            android:layout_centerInParent="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

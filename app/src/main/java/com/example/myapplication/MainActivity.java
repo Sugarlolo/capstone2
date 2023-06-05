@@ -1,3 +1,4 @@
+
 package com.example.myapplication;
 
 import android.annotation.SuppressLint;
@@ -39,11 +40,12 @@ import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private DataBaseHelper dbHelper;
     private MqttAndroidClient mqttAndroidClient;
 
 
     private ListView listView;
-    private ArrayAdapter<DataAdapter.CustomObject> adapter;
+    private ArrayAdapter<String> adapter;
 
     private ImageView refreshButton;
     private AnimationDrawable refreshAnimation;
@@ -130,6 +132,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        dbHelper = new DataBaseHelper(this);
+
+        // 데이터 삽입 예시
+        int gas1 = 10;
+        int gas2 = 200;
+        int gas3 = 300;
+        dbHelper.insertData(gas1, gas2, gas3);
+
+
+
+
     }
 
 
@@ -154,7 +167,7 @@ public class MainActivity extends AppCompatActivity {
         try{
             JSONObject jsonObject = new JSONObject(json);
 
-            /*String gasSensor = jsonObject.getString("Gas_sensor");
+            String gasSensor = jsonObject.getString("Gas_sensor");
             int value = jsonObject.getInt("value");
 
             if (gasSensor.equals("LPG")){
@@ -162,14 +175,14 @@ public class MainActivity extends AppCompatActivity {
                 adapter.add(item);
                 adapter.notifyDataSetChanged();
 
-            }*/
+            }
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
 
-    private String getWifiName() { // 와이파이 이름 받아와서 textField를 바꾸는 코드
+    private String getWifiName() {
         String wifiName = "";
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         if (connectivityManager != null) {
@@ -247,3 +260,4 @@ public class MainActivity extends AppCompatActivity {
 
 
 }
+
